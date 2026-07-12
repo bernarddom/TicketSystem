@@ -20,4 +20,8 @@ public class Seat {
 
     @OneToMany(mappedBy = "seat")
     private Set<EventSeat> eventSeats;
+
+    @ManyToOne
+    @JoinColumn(name = "section_id", nullable = false)
+    private Section section;
 }
