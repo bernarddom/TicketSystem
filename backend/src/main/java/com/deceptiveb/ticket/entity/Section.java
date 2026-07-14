@@ -16,6 +16,8 @@ public class Section {
     )
     private Integer id;
 
+    private String name;
+
     @OneToMany(mappedBy="section")
     private Set<Seat> seats;
 }

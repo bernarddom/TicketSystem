@@ -20,4 +20,7 @@ public class Venue {
 
     @OneToMany(mappedBy = "venue")
     private Set<Event> events;
+
+    @OneToMany(mappedBy = "venue")
+    private Set<Section> sections;
 }
