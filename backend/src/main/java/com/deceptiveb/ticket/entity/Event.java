@@ -26,12 +26,20 @@ public class Event {
     @JoinColumn(name="cart_id", nullable=false)
     private Venue venue;
 
-    @OneToMany(mappedBy = "event")
     private Set<EventSeat> eventSeats;
 
     private LocalDateTime dateTime;
 
     private Set<Ticket> tickets;
+
+    public Event() {
+    }
+
+    public Event(Venue venue, LocalDateTime dateTime, String name) {
+        this.venue = venue;
+        this.name = name;
+        this.dateTime = dateTime;
+    }
 
     public Integer getId() {
         return id;
