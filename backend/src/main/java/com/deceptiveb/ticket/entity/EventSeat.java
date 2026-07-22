@@ -18,7 +18,7 @@ public class EventSeat {
     )
     private Integer id;
 
-    private SeatStatus seatStatus;
+    private SeatStatus seatStatus = SeatStatus.FREE;
 
     @ManyToOne
     @JoinColumn(name = "event_id", nullable = false)
@@ -29,4 +29,58 @@ public class EventSeat {
     private Seat seat;
 
     private LocalDateTime holdExpiresAt;
+
+    public EventSeat() {
+    }
+
+    public EventSeat(Seat seat, Event event) {
+        this.seat = seat;
+        this.event = event;
+    }
+
+    public EventSeat(SeatStatus seatStatus, Event event, Seat seat) {
+        this.seatStatus = seatStatus;
+        this.event = event;
+        this.seat = seat;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public SeatStatus getSeatStatus() {
+        return seatStatus;
+    }
+
+    public void setSeatStatus(SeatStatus seatStatus) {
+        this.seatStatus = seatStatus;
+    }
+
+    public Event getEvent() {
+        return event;
+    }
+
+    public void setEvent(Event event) {
+        this.event = event;
+    }
+
+    public Seat getSeat() {
+        return seat;
+    }
+
+    public void setSeat(Seat seat) {
+        this.seat = seat;
+    }
+
+    public LocalDateTime getHoldExpiresAt() {
+        return holdExpiresAt;
+    }
+
+    public void setHoldExpiresAt(LocalDateTime holdExpiresAt) {
+        this.holdExpiresAt = holdExpiresAt;
+    }
 }
