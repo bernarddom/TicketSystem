@@ -23,6 +23,14 @@ public class Order {
     @OneToMany(mappedBy = "order")
     private Set<Ticket> tickets;
 
+    public Order() {
+    }
+
+    public Order(AppUser user, Set<Ticket> tickets) {
+        this.user = user;
+        this.tickets = tickets;
+    }
+
     public Integer getId() {
         return id;
     }

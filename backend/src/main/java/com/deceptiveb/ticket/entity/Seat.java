@@ -18,10 +18,21 @@ public class Seat {
     )
     private Integer id;
 
-    private String Label;
+    private String row;
+
+    private Integer number;
 
     @OneToMany(mappedBy = "seat")
     private Set<EventSeat> eventSeats;
+
+    public Seat() {
+    }
+
+    public Seat(String row, Integer number, Section section) {
+        this.row = row;
+        this.number = number;
+        this.section = section;
+    }
 
     public Integer getId() {
         return id;
@@ -29,14 +40,6 @@ public class Seat {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public String getLabel() {
-        return Label;
-    }
-
-    public void setLabel(String label) {
-        Label = label;
     }
 
     public Set<EventSeat> getEventSeats() {

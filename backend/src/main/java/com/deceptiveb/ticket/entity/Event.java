@@ -6,6 +6,7 @@ import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.Set;
 
+@Table
 @Entity
 public class Event {
 

@@ -20,6 +20,12 @@ public class Venue {
 
     private String name;
 
+    private String address;
+
+    @ManyToOne
+    @JoinColumn(name = "destination_id", nullable = false)
+    private Destination destination;
+
     @OneToMany(mappedBy = "venue")
     private Set<Event> events;
 
@@ -27,6 +33,19 @@ public class Venue {
     private Set<Section> sections;
 
     public Venue() {
+    }
+
+    public Venue(String name, String address, Destination destination) {
+        this.name = name;
+        this.address = address;
+        this.destination = destination;
+    }
+
+    public Venue(String name, String address, Destination destination, Set<Section> sections) {
+        this.name = name;
+        this.address = address;
+        this.destination = destination;
+        this.sections = sections;
     }
 
     public Venue(String name) {

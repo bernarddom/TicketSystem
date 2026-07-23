@@ -1,6 +1,7 @@
 package com.deceptiveb.ticket.service.impl;
 
 import com.deceptiveb.ticket.dto.event.EventRequest;
+import com.deceptiveb.ticket.dto.event.EventResponse;
 import com.deceptiveb.ticket.entity.Event;
 import com.deceptiveb.ticket.entity.EventSeat;
 import com.deceptiveb.ticket.entity.Seat;
@@ -38,12 +39,14 @@ public class EventServiceImpl implements EventService {
         this.eventSeatRepo = eventSeatRepo;
     }
 
-    public Event addEvent(EventRequest eventReq) {
-        Event event = eventRequestMapper.apply(eventReq);
+    public EventResponse addEvent(EventRequest eventReq) {
+        Event event = this.eventRepo.save(eventRequestMapper.apply(eventReq));
+
 
         List<Seat> eventSeats = seatRepo.findAllBySectionVenueId(event.getId());
-        eventSeats.stream().map(i -> eventSeatRepo.save(new EventSeat()));
-        return this.eventRepo.save(event);
+        eventSeats.forEach(i -> eventSeatRepo.save(new EventSeat()));
+
+        return this.eventResponseMapper();
     }
 
     public Event getEvent(Integer eventId) {
